@@ -2,6 +2,7 @@ package infnet.assessement.demo.controller;
 import infnet.assessement.demo.repository.*;
 import infnet.assessement.demo.validacao.CryptWithMD5;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
@@ -32,7 +33,7 @@ public class LivroController {
         model.put("success",false);
         return "/secureadm/produtos";
     }
-
+    @PreAuthorize("hasAnyRole('ADMIN')")
     @PostMapping(value = "produtos")
     public void save(@RequestParam("titulo") String titulo,
                      @RequestParam("ano") String ano,
@@ -135,7 +136,7 @@ public class LivroController {
         autorRepository.delete(autorList);
 
         livroRepository.delete(livro);
-        return "redirect:/secureadm/lista";
+        return "/secureadm/lista";
     }
 
 }

@@ -15,8 +15,12 @@ import java.util.List;
 @Entity
 @Component
 @Table(name = "adm")
-public class UsuarioAdm implements GrantedAuthority {
+public class UsuarioAdm {
 
+    public UsuarioAdm(String adm, String senha) {
+        this.adm = adm;
+        this.senha = senha;
+    }
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -24,9 +28,7 @@ public class UsuarioAdm implements GrantedAuthority {
 
     @Column
     private String adm;
+    @Column
+    private String senha;
 
-    @Override
-    public String getAuthority() {
-        return adm;
-    }
 }

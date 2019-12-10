@@ -2,8 +2,6 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
 <%@ page import ="java.util.*" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
-<%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 
 <html>
 <head>
@@ -43,6 +41,12 @@
                 <input type="password"  class="form-control" name="password" placeholder="Password"  >
             </div>
         </div>
+         <div class="form-group form-group-lg">
+             <label>Perfil:</label>
+             <div class="col-sm-10">
+                 <input type="admin"  class="form-control" name="admin"  >
+             </div>
+         </div>
 
         <div style="float:right">
             <button type="submit" class="btn btn-primary">Login</button>

@@ -2,8 +2,7 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
 <%@ page import ="java.util.*" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
-<%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
+
 
 <html>
 <head>
@@ -111,11 +110,17 @@
             </div>
         </div>
 
+        <div class="form-group form-group-lg">
+            <label for="admin" class="col-sm-2 control-label">Admin ou Usuario:</label>
+            <div class="col-sm-10">
+                <input type="text" id="admin" class="form-control" name="admin" >
+            </div>
+        </div>
+
         <div style="float:right">
             <button type="submit" class="btn btn-primary">Save</button>
         </div>
 
-        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
     </form>
 
     </c:if>

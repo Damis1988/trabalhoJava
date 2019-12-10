@@ -2,8 +2,6 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
-<%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 
 <html>
 <head>
@@ -82,8 +80,7 @@
     <a href="<%=request.getContextPath()%>/secure/main">Voltar a pagina inicial</a>
 
     <br><br>
-    <a href="<%=request.getContextPath()%>/login/logout">Logout</a>
-
+    <a href="<%=request.getContextPath()%>/login/logou">Sair</a>
 </center>
 </body>
 </html>
