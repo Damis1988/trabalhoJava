@@ -2,6 +2,8 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
 <%@ page import ="java.util.*" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 
 <html>
 <head>
@@ -27,7 +29,7 @@
                     <c:out value="${message}" />
                     <c:if test="${success == true}">
                         <br>
-                        <a href="<%=request.getContextPath()%>/login/doLogin">Login here</a>
+                        <a href="<%=request.getContextPath()%>">Login here</a>
                     </c:if>
                 </h3>
 
@@ -47,6 +49,12 @@
             <label for="sobrenome" class="col-sm-2 control-label">Sobrenome:</label>
             <div class="col-sm-10">
                 <input type="text" id="sobrenome" class="form-control" name="sobrenome"  >
+            </div>
+        </div>
+        <div class="form-group form-group-lg">
+            <label for="idade" class="col-sm-2 control-label">Idade:</label>
+            <div class="col-sm-10">
+                <input type="text" id="idade" class="form-control" name="idade"  >
             </div>
         </div>
 
@@ -97,15 +105,17 @@
         </div>
 
         <div class="form-group form-group-lg">
-            <label for="password" class="col-sm-2 control-label">Password:</label>
+            <label for="senha" class="col-sm-2 control-label">Password:</label>
             <div class="col-sm-10">
-                <input type="password" id="password" class="form-control" name="password" >
+                <input type="password" id="senha" class="form-control" name="senha" >
             </div>
         </div>
 
         <div style="float:right">
             <button type="submit" class="btn btn-primary">Save</button>
         </div>
+
+        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
     </form>
 
     </c:if>

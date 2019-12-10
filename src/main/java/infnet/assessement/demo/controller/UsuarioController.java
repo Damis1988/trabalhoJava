@@ -1,8 +1,11 @@
 package infnet.assessement.demo.controller;
 
-import infnet.assessement.demo.repository.*;
-import infnet.assessement.demo.validacao.CryptWithMD5;
+import infnet.assessement.demo.repository.Autor;
+import infnet.assessement.demo.repository.Usuario;
+import infnet.assessement.demo.repository.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
@@ -15,31 +18,17 @@ public class UsuarioController {
 
     @Autowired
     UsuarioRepository usuarioRepository;
-    @Autowired
-    AutorRepository autorRepository;
-    @Autowired
-    LivroRepository livroRepository;
-    @Autowired
-    EstoqueRepository estoqueRepository;
-    @Autowired
-    CryptWithMD5 cryptWithMD5;
 
     Usuario usuario;
-
+    Autor autor;
 
     @GetMapping(value = "criacao")
     public String createPage(Map<String, Object> model) {
         model.put("message",null);
         model.put("success",false);
-        return "usuario/criacao";
+        return "/usuario/criacao";
     }
 
-    public String passwordCript(String senha) {
-
-        String passwordCript;
-        passwordCript = cryptWithMD5.cryptWithMD5(senha);
-        return passwordCript;
-    }
 
     @PostMapping(value = "criacao")
     public void save(@RequestParam("nome") String nome,
@@ -54,7 +43,8 @@ public class UsuarioController {
                      @RequestParam("email") String email,
                      @RequestParam("senha") String senha,
                      Map<String,Object> model) {
-        senha = passwordCript(senha);
+
+        //password = passwordCript(password);
         if(usuarioRepository.findByEmail(email)!= null) {
             model.put("usuario",usuario);
             model.put("message", "Email ja existe");
@@ -67,10 +57,10 @@ public class UsuarioController {
                 StringUtils.hasText(cidade) &&  StringUtils.hasText(cep) &&  StringUtils.hasText(email) &&  StringUtils.hasText(senha)) {
             Usuario usuario = new Usuario(nome,sobrenome,idade,rua,numero,complemento,cep,bairro,cidade,email,senha);
             usuarioRepository.save(usuario);
-            model.put("message", "Conta criada");
+            model.put("message", "Your account has been created");
             model.put("success", true);
         } else {
-            model.put("message", "Ops !!!! Formulario prenchido de forma incorreta");
+            model.put("message", "Ops! Please, fill all inputs");
             model.put("success", false);
         }
     }
@@ -80,7 +70,7 @@ public class UsuarioController {
         return usuarioRepository.findAll();
     }
 
-    @PostMapping(value="edicao")
+    @PostMapping(value="update")
     public void update(@RequestParam("nome") String nome,
                        @RequestParam("sobrenome") String sobrenome,
                        @RequestParam("idade") String idade,
@@ -100,7 +90,7 @@ public class UsuarioController {
             model.put("success",false);
             return;
         }
-        senha = passwordCript(senha);
+        //password = passwordCript(password);
         Usuario usuario = usuarioRepository.findOne(id);
         usuario.setNome(nome);
         usuario.setSobrenome(sobrenome);
@@ -116,14 +106,5 @@ public class UsuarioController {
         usuarioRepository.save(usuario);
     }
 
-    @GetMapping(value = "lista")
-    public String listPage(Map<String, Object> model) {
-        Iterable<Livro> all = livroRepository.findAll();
-        Iterable<Autor> autors = autorRepository.findAll();
-        Iterable<Estoque> estoques = estoqueRepository.findAll();
-        model.put("livroLista", all);
-        model.put("autorLista", autors);
-        model.put("estoqueLista", estoques);
-        return "usuario/lista";
-    }
+
 }

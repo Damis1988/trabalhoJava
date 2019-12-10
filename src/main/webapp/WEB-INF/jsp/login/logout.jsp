@@ -2,6 +2,8 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 
 <html>
 <head>
@@ -16,14 +18,11 @@
 <body>
 <div class="container">
     <br> <br>
+<form:form servletRelativeAction="login/logout" method="post">
     <h2>
         fim de secao
     </h2>
-
-
-
-
-
+</form:form>
 
     </p>
 

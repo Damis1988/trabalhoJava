@@ -2,6 +2,8 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
 <%@ page import ="java.util.*" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 
 <html>
 <head>
@@ -28,24 +30,24 @@
     </c:if>
 
 
-    <form method="post" action="<%=request.getContextPath()%>/login/doLogin" class="form-horizontal">
+     <form:form servletRelativeAction="/login/dologin" method="post">
         <div class="form-group form-group-lg">
-            <label for="email" class="col-sm-2 control-label">Name:</label>
+            <label> Email </label>
             <div class="col-sm-10">
-                <input type="email" name="email" id="email" class="form-control" >
+                <input type="text" name="username"  class="form-control" placeholder="Username">
             </div>
         </div>
         <div class="form-group form-group-lg">
-            <label for="password" class="col-sm-2 control-label">Password:</label>
+            <label>Password:</label>
             <div class="col-sm-10">
-                <input type="password" id="password" class="form-control" name="password"  >
+                <input type="password"  class="form-control" name="password" placeholder="Password"  >
             </div>
         </div>
 
         <div style="float:right">
             <button type="submit" class="btn btn-primary">Login</button>
         </div>
-    </form>
+     </form:form>
 
     <br ><br >
     <a href="<%=request.getContextPath()%>/usuario/criacao">Cria sua conta</a>

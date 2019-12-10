@@ -2,6 +2,8 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
 <%@ page import ="java.util.*" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 
 <html>
 <head>
@@ -95,7 +97,8 @@
        <a href="<%=request.getContextPath()%>/secureadm/gerenciamento">Emprestimo de livro</a>
 
        <br><br>
-       <a href="<%=request.getContextPath()%>/login/logout">Logout</a>
+        <a href="<c:url value="/logout" />">Sair</a>
+
 
 </center>
 </body>
