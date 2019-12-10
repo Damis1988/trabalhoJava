@@ -12,9 +12,8 @@ import javax.persistence.*;
 @Table(name = "estoque")
 public class Estoque {
 
-    public Estoque(Integer quantidade, Livro livro) {
+    public Estoque(Integer quantidade) {
         this.quantidade = quantidade;
-        this.livro = livro;
     }
 
     @Id

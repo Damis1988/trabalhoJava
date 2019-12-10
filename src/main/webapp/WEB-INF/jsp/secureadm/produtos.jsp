@@ -27,7 +27,7 @@
                     <c:out value="${message}" />
                     <c:if test="${success == true}">
                         <br>
-                        <a href="<%=request.getContextPath()%>secure/main">Volte a pagina principal</a>
+                        <a href="<%=request.getContextPath()%>/secureadm/lista">Volte a pagina principal</a>
                     </c:if>
                 </h3>
 
@@ -36,7 +36,7 @@
 
     <br>
 
-    <form method="post" action="<%=request.getContextPath()%>/secureadm/lista" class="form-horizontal">
+    <form method="post" action="<%=request.getContextPath()%>/secureadm/produtos" class="form-horizontal">
         <div class="form-group form-group-lg">
             <label for="titulo" class="col-sm-2 control-label">Titulo :</label>
             <div class="col-sm-10">

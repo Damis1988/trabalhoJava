@@ -7,6 +7,7 @@ import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 
 
+import java.util.List;
 import java.util.Map;
 
 @Controller
@@ -53,7 +54,7 @@ public class LivroController {
                 && StringUtils.hasText(setor) && StringUtils.hasText(tema)) {
             Livro livro = new Livro(titulo,ano,editora,descricao,setor,tema);
             Autor autor = new Autor(nome,sobrenome);
-            Estoque estoque = new Estoque(quantidade,livro);
+            Estoque estoque = new Estoque(quantidade);
             livroRepository.save(livro);
             autorRepository.save(autor);
             estoqueRepository.save(estoque);
@@ -68,7 +69,11 @@ public class LivroController {
     @GetMapping(value = "lista")
     public String listPage(Map<String, Object> model) {
         Iterable<Livro> all = livroRepository.findAll();
+        Iterable<Autor> autors = autorRepository.findAll();
+        Iterable<Estoque> estoques = estoqueRepository.findAll();
         model.put("livroLista", all);
+        model.put("autorLista", autors);
+        model.put("estoqueLista", estoques);
         return "secureadm/lista";
     }
 
@@ -115,10 +120,22 @@ public class LivroController {
     @GetMapping(value = "delete/{id}")
     public String delete(@PathVariable long id) {
         Livro livro = livroRepository.findOne(id);
-        estoqueRepository.delete(livro.getEstoque());
-        autorRepository.delete(livro.getAutor());
+        List<Estoque> estoqueList = livro.getEstoque();
+        for(Estoque estoque : estoqueList) {
+            estoque.setLivro(null);
+        }
+        List<Autor> autorList = livro.getAutor();
+        for(Autor autor : autorList) {
+            autor.setLivro(null);
+        }
+        livro.setEstoque(null);
+        livro.setAutor(null);
+
+        estoqueRepository.delete(estoqueList);
+        autorRepository.delete(autorList);
+
         livroRepository.delete(livro);
-        return "secureadm/delete/{id}";
+        return "redirect:/secureadm/lista";
     }
 
 }

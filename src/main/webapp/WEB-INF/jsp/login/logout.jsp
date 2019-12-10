@@ -16,24 +16,13 @@
 <body>
 <div class="container">
     <br> <br>
+    <h2>
+        fim de secao
+    </h2>
 
-    <p class="text-success">
-        Livro ${livro.titulo}!
-        Dia da Retirada ${biblioteca.dataInicio}!
-        Data da Entrega ${biblioteca.dataFinal}!
-        Prazo para entrega ${biblioteca.prazo}!
-    </p>
-    <br> <br>
 
-    <a href="<%=request.getContextPath()%>/secure/edicao">Edicao de Perfil</a>
-    <br><br>
-    <a href="<%=request.getContextPath()%>/secure/gerenciamento">Retirada de Livro</a>
-    <br><br>
-    <a href="<%=request.getContextPath()%>/secure/lista">Biblioteca</a>
-    <br><br>
-    <a href="<%=request.getContextPath()%>/login/logout">Logout</a>
 
-    <br> <br>
+
 
 
     </p>

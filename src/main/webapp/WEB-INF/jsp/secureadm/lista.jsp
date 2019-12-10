@@ -22,6 +22,9 @@
          <th>
             Deletar Livros
         </th>
+         <th>
+             Id
+         </th>
         <th>
             Titulo
         </th>
@@ -35,17 +38,28 @@
             Descrição
         </th>
          <th>
-             Id
+             Nome
+         </th>
+         <th>
+             Sobrenome
+         </th>
+         <th>
+             Estoque
          </th>
       </tr>
-      <c:forEach var="livro" items="${livroLista} ">
+      <c:forEach var="livro" items="${livroLista}">
+          <c:forEach var="autor" items="${autorLista}">
+              <c:forEach var="estoque" items="${estoqueLista}">
        <tr>
             <td>
                 <a href="<%=request.getContextPath()%>/secureadm/edicao?id=${livro.id}">Editar</a>
             </td>
             <td>
-                <a href="<%=request.getContextPath()%>/secureadm/delete?id=${livro.id}">Deletar</a>
+                <a href="<%=request.getContextPath()%>/secureadm/delete/${livro.id}">Deletar</a>
             </td>
+           <td>
+                   ${livro.id}
+           </td>
             <td>
                 ${livro.titulo}
             </td>
@@ -58,8 +72,18 @@
             <td>
                 ${livro.descricao}
             </td>
-
+           <td>
+                   ${autor.nome}
+           </td>
+           <td>
+                   ${autor.sobrenome}
+           </td>
+           <td>
+                   ${estoque.quantidade}
+           </td>
         </tr>
+      </c:forEach>
+      </c:forEach>
       </c:forEach>
      </table>
 
