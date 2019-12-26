@@ -3,16 +3,12 @@ package infnet.assessement.demo.repository;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.hibernate.engine.internal.Cascade;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.stereotype.Component;
+
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.Collection;
+
 import java.util.List;
-import java.util.Set;
+
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -63,6 +59,4 @@ public class Usuario {
     @Column
     private String senha;
 
-    @OneToMany(mappedBy = "usuario", cascade = CascadeType.PERSIST)
-    private List<Biblioteca> biblioteca;
 }

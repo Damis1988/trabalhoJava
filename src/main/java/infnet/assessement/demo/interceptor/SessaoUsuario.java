@@ -26,11 +26,11 @@ public class SessaoUsuario {
         this.usuario = null;
     }
 
-    public void addLoggedUserA(UsuarioAdm c) {
-        this.usuarioAdm = c;
+    public void addLoggedUserA(UsuarioAdm d) {
+        this.usuarioAdm = d;
     }
 
-    public Usuario getLoggedUserA() {
+    public UsuarioAdm getLoggedUserA() {
         return usuarioAdm;
     }
 

@@ -42,8 +42,7 @@ public class Livro {
     private  String tema;
 
 
-    @OneToMany(mappedBy = "livro", targetEntity = Autor.class, fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
+    @OneToMany(mappedBy = "livro",cascade = CascadeType.PERSIST)
     private List<Autor> autor;
-    @OneToMany(mappedBy = "livro", cascade = CascadeType.PERSIST)
-    private List<Estoque> estoque;
+
    }

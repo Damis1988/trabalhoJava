@@ -27,9 +27,11 @@ public class Autor {
     private String nome;
     @Column
     private String sobrenome;
+
     @ManyToOne
-    @JoinColumn(name = "id_autor")
+    @JoinColumn(name = "id_livro")
     private Livro livro;
+
 
 
 }

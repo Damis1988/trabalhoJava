@@ -20,7 +20,7 @@
         Login Adm
     </h2>
 
-    <form method="post" action="<%=request.getContextPath()%>/login/doLogin" class="form-horizontal">
+    <form method="post" action="<%=request.getContextPath()%>/login/loginAdm" class="form-horizontal">
         <div class="form-group form-group-lg">
             <label for= "adm" class="col-sm-2 control-label">Adm:</label>
             <div class="col-sm-10">

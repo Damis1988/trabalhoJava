@@ -28,7 +28,7 @@
                     <c:out value="${message}" />
                     <c:if test="${success == true}">
                         <br>
-                        <a href="<%=request.getContextPath()%>">Login here</a>
+                        <a href="<%=request.getContextPath()%>/login/doLogin">Login here</a>
                     </c:if>
                 </h3>
 
@@ -92,7 +92,7 @@
         <div class="form-group form-group-lg">
             <label for="cep" class="col-sm-2 control-label">Cep:</label>
             <div class="col-sm-10">
-                <input type="text" id="cep" class="form-control" name="cep" >
+                <input type="text" id="cep" class="form-control" name="cep" onkeypress="$(this).mask('00000-000')">
             </div>
         </div>
 
@@ -106,16 +106,11 @@
         <div class="form-group form-group-lg">
             <label for="senha" class="col-sm-2 control-label">Password:</label>
             <div class="col-sm-10">
-                <input type="password" id="senha" class="form-control" name="senha" >
+                <input type="password" id="senha" class="form-control" name="senha" attern="[0-9a-fA-F]{4,8}" inputmode="numeric" required
+                       title="Digite uma senha consistindo de 4-8 dígitos hexadecimais" >
             </div>
         </div>
 
-        <div class="form-group form-group-lg">
-            <label for="admin" class="col-sm-2 control-label">Admin ou Usuario:</label>
-            <div class="col-sm-10">
-                <input type="text" id="admin" class="form-control" name="admin" >
-            </div>
-        </div>
 
         <div style="float:right">
             <button type="submit" class="btn btn-primary">Save</button>

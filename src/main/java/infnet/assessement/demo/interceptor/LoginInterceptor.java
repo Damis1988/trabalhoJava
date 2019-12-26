@@ -1,6 +1,7 @@
 package infnet.assessement.demo.interceptor;
 
 import infnet.assessement.demo.repository.Usuario;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
@@ -10,7 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 @Component
-public class loginInterceptor  implements HandlerInterceptor {
+public class LoginInterceptor implements HandlerInterceptor {
 
 
     @Autowired
@@ -22,7 +23,7 @@ public class loginInterceptor  implements HandlerInterceptor {
         Usuario usuario = sessaoUsuario.getLoggedUser();
         if(usuario != null) {
             return true;
-        } else if(url.contains("/usuario/criacao") || url.contains("login")) {
+        } else if(url.contains("usuario") || url.contains("login") || url.contains("secureadm")) {
             return true;
         }
         String loginPage = httpServletRequest.getContextPath() + "/login/doLogin";

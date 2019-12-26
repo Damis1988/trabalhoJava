@@ -16,36 +16,40 @@
      ${message}
 
     <br><br>
-    <form method="post" action="<%=request.getContextPath()%>/secureadm/edicao">
-        Name:
+    <form method="post" action="<%=request.getContextPath()%>/secureadm/edicao" class="form-horizontal">
+        Titulo:
 
         <input type="text" name="titulo" value="${livro.titulo}"  >
 
         <br><br>
+        Ano :
         <input type="text" name="ano" value="${livro.ano}"  >
 
         <br><br>
+        Editora :
         <input type="text" name="editora" value="${livro.editora}"  >
 
         <br><br>
+        Descrição :
         <textarea rows="10" cols="20" id= "descricao" name="descricao" value="${livro.descricao}"></textarea> 
 
         <br><br>
+        Nome :
         <input type="text" name="nome" value="${autor.nome}"  >
 
         <br><br>
+        Sobrenome :
         <input type="text" name="sobrenome" value="${autor.sobrenome}"  >
 
-        <br><br>
-        <input type="text" name="nome" value="${estoque.quantidade}"  >
-        
+        <input type="hidden" name="id_autor" value="${autor.id}"  >
+        <input type="hidden" name="id_livro" value="${livro.id}"  >
         <input type="submit" value="Save" />
     </form>
 
      <br><br>
      <a href="<%=request.getContextPath()%>/livro/lista">Biblioteca Lista</a>
      <br><br>
-    <a href="<c:url value="/logout" />">Sair</a>
+    <<a href="<%=request.getContextPath()%>/login/logout">Sair</a>
 
 
 

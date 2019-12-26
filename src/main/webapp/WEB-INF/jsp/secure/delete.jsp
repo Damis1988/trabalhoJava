@@ -19,41 +19,43 @@
     <br> <br>
 
     <br> <br>
-
-    <p class="text-success">
-        Welcome ${usuario.name}!
-
         <c:if test="${message != null}">
-    <h3>
-        <c:out value="${message}" />
-    </h3>
+            <h3>
+                <c:out value="${message}" />
+                <c:if test="${success == true}">
+                    <br>
+                    <a href="<%=request.getContextPath()%>/secure/main">Volte a pagina principal</a>
+                </c:if>
+            </h3>
 
-    </c:if>
-    </p>
+        </c:if>
+        <c:if test="${success == false}">
+
     <br> <br>
 
-    <p class="text-success">
-        Livro ${bibliotec.tituloEmprestado}!
-        Dia da Retirada ${biblioteca.dataInicio}!
-        Data da Entrega ${biblioteca.dataFinal}!
-        Prazo para entrega ${biblioteca.prazo}!
-    </p>
+
+    <form method="post" action="<%=request.getContextPath()%>/usuario/secure/delete" class="form-horizontal">
+    Usuario email:
+        <div class="form-group form-group-lg">
+            <label for="email" class="col-sm-2 control-label">Email:</label>
+            <div class="col-sm-10">
+                <input type="email" name="email" id="email" class="form-control" >
+            </div>
+        </div>
+    <br> <br>
+    <input type="submit" value="Save" />
+    </form>
+
     <br> <br>
 
-    <a href="<%=request.getContextPath()%>/usuario/secure/edicaousuario">Edicao </a>
-    <br><br>
-    <a href="<%=request.getContextPath()%>/secureadm/lista">Buscar Livro</a>
-    <br><br>
-    <a href="<%=request.getContextPath()%>/usuario/secure/delete">Deletar</a>
     <br><br>
     <a href="<%=request.getContextPath()%>/login/logout">Logout</a>
 
     <br> <br>
 
-
     </p>
 
 </div>
-
+</c:if>
 </body>
 </html>

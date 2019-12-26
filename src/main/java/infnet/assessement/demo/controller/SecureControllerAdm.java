@@ -6,10 +6,7 @@ import infnet.assessement.demo.repository.UsuarioAdmRepository;
 import infnet.assessement.demo.validacao.CryptWithMD5;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Map;
 @Controller
@@ -31,12 +28,12 @@ public class SecureControllerAdm {
         return passwordCript;
     }
 
-    @RequestMapping(value = "loginAdm", method = RequestMethod.GET)
+    @GetMapping(value = "loginAdm")
     public String loginPage() {
-        return "login";
+        return "login/loginAdm";
     }
 
-    @PostMapping(value = "doLogin")
+    @PostMapping(value = "loginAdm")
     public String login(@RequestParam("adm") String adm, @RequestParam("senha") String senha,
                         Map<String, Object> model) {
         senha = passwordCript(senha);
@@ -50,9 +47,9 @@ public class SecureControllerAdm {
         }
     }
 
-    @RequestMapping(value = "logout", method = RequestMethod.GET)
+    @RequestMapping(value = "/logoutA", method = RequestMethod.GET)
     public String logout() {
         userSession.removeLoggedUserA();
-        return "logout";
+        return "/logoutAdm";
     }
 }

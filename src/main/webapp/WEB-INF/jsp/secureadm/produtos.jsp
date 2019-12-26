@@ -28,7 +28,6 @@
                     <c:out value="${message}" />
                     <c:if test="${success == true}">
                         <br>
-                        <a href="<%=request.getContextPath()%>/secureadm/lista">Volte a pagina principal</a>
                     </c:if>
                 </h3>
 
@@ -36,12 +35,12 @@
             <c:if test="${success == false}">
 
     <br>
-
-    <form method="post" action="<%=request.getContextPath()%>/secureadm/produtos" class="form-horizontal">
+                <form method="post" action="<%=request.getContextPath()%>/secureadm/produtos" class="form-horizontal">
         <div class="form-group form-group-lg">
             <label for="titulo" class="col-sm-2 control-label">Titulo :</label>
             <div class="col-sm-10">
-                <input type="text" name="titulo" id="titulo" class="form-control" required >
+                <input type="text" name="titulo" id="titulo" class="form-control" pattern="[Aa-Zz\s]+$" required
+                       title="Somente letras">
             </div>
         </div>
         <div class="form-group form-group-lg">
@@ -54,7 +53,8 @@
         <div class="form-group form-group-lg">
             <label for="editora" class="col-sm-2 control-label">Editora:</label>
             <div class="col-sm-10">
-                <input type="text" id="editora" class="form-control" name="editora"  >
+                <input type="text" id="editora" class="form-control" name="editora" pattern="[Aa-Zz\s]+$" required
+                       title="Somente letras">
             </div>
         </div>
         <div class="form-group form-group-lg">
@@ -71,14 +71,14 @@
         <div class="form-group form-group-lg">
             <label for="nome" class="col-sm-2 control-label">Nome:</label>
             <div class="col-sm-10">
-                <input type="text" id="nome" class="form-control" name="nome" pattern="[a-z\s]+$" required
+                <input type="text" id="nome" class="form-control" name="nome" pattern="[Aa-Zz\s]+$" required
                        title="Somente letras">
             </div>
         </div>
         <div class="form-group form-group-lg">
             <label for="sobrenome" class="col-sm-2 control-label">Sobrenome:</label>
             <div class="col-sm-10">
-                <input type="text" id="sobrenome" class="form-control" name="sobrenome" pattern="[A-z\s]+$" required
+                <input type="text" id="sobrenome" class="form-control" name="sobrenome" pattern="[Aa-Zz\s]+$" required
                        title="Somente letras">
             </div>
         </div>
@@ -101,16 +101,7 @@
             </div>
         </div>
 
-        <h2>
-            Unidades no estoque
 
-        </h2>
-        <div class="form-group form-group-lg">
-            <label for="quantidade" class="col-sm-2 control-label">Unidades:</label>
-            <div class="col-sm-10">
-                <input type="number" id="quantidade" class="form-control" name="quantidade">
-            </div>
-        </div>
 
         <div style="float:right">
             <button type="submit" class="btn btn-primary">Save</button>
